@@ -1,8 +1,13 @@
+/* 
+-----------------------------------
+Multiple Section Style
+-----------------------------------
+*/
+
 html {
     scroll-behavior: smooth;
 }
 
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -16,10 +21,11 @@ body {
     background-color: #121212;
 }
 
-h1,
-h2,
-h3 {
+/* Correction pour les titres */
+h1, h2, h3 {
     font-weight: normal;
+    text-align: center; /* Centrer le texte horizontalement */
+    margin: 0 auto; /* Cela garantit que l'élément est centré horizontalement */
 }
 
 a {
@@ -27,118 +33,29 @@ a {
     color: white;
 }
 
-ul {
-    list-style-type: none;
-}
 
 section {
     padding: 80px 0;
+    display: flex;
+    justify-content: center; /* Centrer le contenu horizontalement */
+    align-items: center; /* Centrer le contenu verticalement */
+    flex-direction: column; /* Organiser les éléments en colonne */
     text-align: center;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Navigation */
-nav {
-    font-family: "Orbitron", sans-serif;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    z-index: 1000;
+.row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-nav .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-nav ul {
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    font-size: 18px;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: #00bcd4;
-}
-
-/* Hero Section */
-.hero {
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    color: white;
-    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur les petits écrans */
     justify-content: center;
-    align-items: center;
+}
+
+.content {
     text-align: center;
-    position: relative;
-    border-bottom: solid #000 25px;
 }
 
-video {
-    filter: blur(2px);
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-
-/* Parallax Effect */
-.parallax-section {
-    position: relative;
-    overflow: hidden;
-}
-
-.parallax-section .content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px;
-    z-index: 1;
-    position: relative;
-}
-
-.parallax-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('src/background4.jpg');
-    filter: blur(8px);
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    transform: translateZ(0) scale(1.1);
-}
-
-footer {
-    background-color: #222;
-    padding: 20px;
-    text-align: center;
+.content h2 {
+    margin-bottom: 25px;
 }
 
 button {
@@ -178,28 +95,335 @@ button:hover:before {
     transform: translateX(15em);
 }
 
+.neon {
+    color: #fff;
+    text-shadow: 0 0 10px #ffffff;
+    font-family: "Audiowide", sans-serif;
+    text-align: center;
+}
+
+h1, h2{
+    font-family: "Audiowide", sans-serif;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 1024px) {
+    /* On des écrans de taille moyenne, on ajuste les sections et les colonnes */
+    section {
+        padding: 60px 20px;
+    }
+
+    .row {
+        flex-direction: column; /* Met les éléments en colonne */
+        align-items: center;
+    }
+
+    .notice-card {
+        width: 90%; /* Les cartes prennent plus de largeur sur les petits écrans */
+        margin-bottom: 20px; /* Ajoute un espacement entre les cartes */
+    }
+
+    button {
+        font-size: 14px; /* Réduit la taille du texte du bouton */
+        padding: 0.6em 2.4em; /* Réduit les espacements internes du bouton */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Sur les écrans encore plus petits, comme les tablettes ou les mobiles */
+    section {
+        padding: 40px 10px;
+    }
+
+    .row {
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px; /* Espacement entre les éléments */
+    }
+
+    .notice-card {
+        width: 100%; /* Les cartes prennent toute la largeur disponible */
+    }
+
+    button {
+        font-size: 13px; /* Réduit la taille du texte du bouton */
+        padding: 0.5em 2em; /* Ajuste la taille du bouton */
+    }
+
+    .neon {
+        font-size: 20px; /* Réduit la taille de la police pour les petits écrans */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Sur les écrans de très petite taille, comme les smartphones */
+    section {
+        padding: 30px 10px;
+    }
+
+    .row {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .notice-card {
+        width: 100%;
+        margin-bottom: 15px; /* Espace réduit entre les cartes */
+    }
+
+    button {
+        font-size: 12px; /* Taille de texte encore plus petite */
+        padding: 0.4em 1.5em; /* Plus petit */
+    }
+
+    .neon {
+        font-size: 18px; /* Réduction de la taille du texte */
+    }
+}
+
+/* 
+-----------------------------------
+Navigation Bar
+-----------------------------------
+*/
+
+nav {
+    font-family: "Orbitron", sans-serif;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Styles pour le menu burger */
+nav .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+nav .menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Menu ul */
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+/* Liens du menu */
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    font-size: 18px;
+    transition: color 0.3s;
+    color: white;
+}
+
+/* Responsiveness : Menu mobile */
+@media (max-width: 768px) {
+    nav ul {
+        position: absolute;
+        top: 80px; /* Ajustez cette valeur pour la hauteur de votre navbar */
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        display: none;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav .menu-toggle {
+        display: flex;
+    }
+}
+
+
+
+/* 
+-----------------------------------
+Hero - Section 1
+-----------------------------------
+*/
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    border-bottom: solid #000 25px;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+video {
+    filter: blur(2px);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 1024px) {
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Réduit la taille du titre */
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Réduit la taille du texte */
+        margin-bottom: 20px;
+    }
+
+    video {
+        filter: blur(1px); /* Réduit le flou de la vidéo */
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .hero-content h1 {
+        font-size: 2rem; /* Encore plus petit pour le titre */
+        margin-bottom: 10px;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem; /* Réduit la taille du texte */
+        margin-bottom: 15px;
+    }
+
+    video {
+        filter: blur(0.5px); /* Moins de flou */
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 1.8rem; /* Taille du titre très réduite */
+        margin-bottom: 5px;
+    }
+
+    .hero-content p {
+        font-size: 0.8rem; /* Texte encore plus petit */
+        margin-bottom: 10px;
+    }
+
+    video {
+        filter: blur(0px); /* Pas de flou sur les petits écrans */
+    }
+}
+
+
+/* 
+-----------------------------------
+Parralax Effect
+-----------------------------------
+*/
+
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-section .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    z-index: 1;
+    position: relative;
+}
+
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('src/background4.jpg');
+    filter: blur(8px);
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transform: translateZ(0) scale(1.1);
+}
+
+footer {
+    background-color: #222;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* 
+-----------------------------------
+Project - Section 3
+-----------------------------------
+*/
+
 .projects-gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* Centrer les cartes */
     gap: 15px;
-    /* Réduire l'espace entre les cartes */
     padding: 20px;
     background-color: #111;
-    /* Fond sombre pour la galerie */
 }
 
 .flip-card {
     background-color: transparent;
     width: 350px;
-    /* Largeur augmentée */
     height: 450px;
-    /* Hauteur augmentée */
     perspective: 1000px;
-    /* Nécessaire pour l'effet 3D */
-    margin: 5px;
-    /* Espacement réduit autour des cartes */
 }
 
 .flip-card-inner {
@@ -213,7 +437,6 @@ button:hover:before {
 
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-    /* Effet de retournement */
 }
 
 .project,
@@ -223,7 +446,6 @@ button:hover:before {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 10px;
-    /* Coins arrondis */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -235,57 +457,55 @@ button:hover:before {
 
 .project {
     background-color: #222;
-    /* Face avant sombre */
     color: white;
 }
 
 .project img {
     width: 300px;
-    height: 300px;
+    height: auto;
     border-radius: 10px;
 }
 
 .project h3 {
     margin-top: 10px;
     font-size: 1.6em;
-    /* Texte légèrement agrandi */
     font-weight: bold;
 }
 
 .project p {
     margin-top: 10px;
     font-size: 1em;
-    /* Texte légèrement agrandi */
     text-align: center;
 }
 
 .flip-card-back {
     background-color: #333;
-    /* Couleur pour la face arrière */
     color: white;
     transform: rotateY(180deg);
 }
 
 .flip-card-back .title {
     font-size: 1.6em;
-    /* Texte légèrement agrandi */
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .flip-card-back p {
     font-size: 1.1em;
-    /* Texte légèrement agrandi */
 }
+
+/* 
+-----------------------------------
+About - Section 2
+-----------------------------------
+*/
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* Ajustez si nécessaire */
     background-color: #000;
-    /* Fond sombre pour mieux voir l'effet néon */
 }
 
 .circle {
@@ -294,58 +514,24 @@ button:hover:before {
     height: 300px;
     border-radius: 50%;
     background: #1a1a1a;
-    /* Fond du cercle */
     box-shadow: 0 0 20px #dcdcdc, 0 0 40px #ffffff, 0 0 60px #ffffff;
-    /* Effet néon */
     overflow: hidden;
-    /* Cache tout ce qui dépasse du cercle */
 }
 
 .circle img {
     position: absolute;
     bottom: -220px;
-    /* Ajustez pour descendre l'image */
     left: 50%;
     transform: translateX(-50%);
     width: 120%;
-    /* Optionnel : augmente légèrement la largeur pour qu'elle dépasse */
     object-fit: cover;
-    /* Assure un bon ajustement */
 }
 
-.row {
-    display: flex;
-    align-items: center;
-}
-
-.content {
-    text-align: center;
-}
-
-.content h2 {
-    margin-bottom: 25px;
-}
-
-.background-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-.neon {
-    color: #fff;
-    /* Couleur principale du texte */
-    text-shadow: 0 0 10px #ffffff;
-    /* Ombre néon rose */
-    font-family: 'Arial', sans-serif;
-    /* Police pour une belle apparence */
-    text-align: center;
-    /* Centrer le texte si nécessaire */
-}
+/* 
+-----------------------------------
+Skill - Section 4
+-----------------------------------
+*/
 
 .card {
     position: relative;
@@ -375,7 +561,7 @@ button:hover:before {
     transform: rotate(0deg);
     min-width: 180px;
     margin: 0 10px;
-} 
+}
 
 .card .glass::before {
     content: attr(data-text);
@@ -394,10 +580,77 @@ button:hover:before {
     max-width: 100px;
 }
 
+/* Responsive Styles */
+
+/* Sur les écrans de taille moyenne et plus petits */
+@media screen and (max-width: 1024px) {
+    /* Changer la direction du flex pour empiler les cartes */
+    .card {
+        flex-direction: column; /* Les cartes s'empilent verticalement */
+        margin-bottom: 30px; /* Ajoute un espace entre les cartes */
+    }
+
+    .card .glass {
+        margin: 0; /* Enlève les marges pour éviter que les cartes ne se chevauchent */
+        transform: none; /* Désactive la rotation */
+        backdrop-filter: none; /* Désactive le flou */
+        width: 250px; /* Augmente la taille de la carte */
+        height: 300px; /* Augmente la hauteur de la carte */
+        margin: 30px; /* Ajoute un espace entre les cartes */
+
+    }
+
+    .card:hover .glass {
+        transform: none; /* Désactive l'animation de déploiement */
+        margin: 0; /* Assure qu'il n'y a pas de décalage horizontal */
+    }
+}
+
+/* Sur les écrans encore plus petits (tablettes et smartphones) */
+@media screen and (max-width: 768px) {
+    .card .glass {
+        width: 220px; /* Augmente encore la taille des cartes pour tablettes */
+        height: 270px; /* Augmente la hauteur */
+    }
+
+    .card img {
+        max-width: 90px; /* Augmente la taille de l'image */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card .glass {
+        width: 200px; /* Augmente la taille des cartes pour smartphones */
+        height: 250px; /* Augmente la hauteur */
+    }
+
+    .card img {
+        max-width: 80px; /* Augmente la taille de l'image */
+    }
+}
+
+
+/* 
+-----------------------------------
+Notice - Section 5
+-----------------------------------
+*/
+
+#notices {
+    text-align: center; /* Centre le texte du h2 */
+    font-family: "Audiowide", sans-serif;
+}
+
+#notices .notice .row {
+    display: flex;
+    justify-content: center; /* Centre les cartes horizontalement */
+    gap: 20px; /* Espace entre les cartes */
+    margin-top: 20px; /* Espacement entre le titre et les cartes */
+}
+
 .notice-card {
     width: 254px;
     height: 190px;
-    margin-right: 50px;
     background-color: #222;
     transition: all 0.4s;
     border-radius: 10px;
@@ -453,13 +706,6 @@ button:hover:before {
 
 .notice{
     margin-top: 25px;
-    margin-left: 325px;    
-}
-
-h1, h2{
-    font-family: "Audiowide", sans-serif;
-}
-
-.neon {
-    font-family: "Audiowide", sans-serif;
+    display: flex;
+    justify-content: center;
 }
